@@ -4,6 +4,8 @@ import { validation } from "../validation/validation";
 //React toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+//css
+import styles from "./signup.module.css";
 
 const SignUp = () => {
   const [data, setData] = useState({
@@ -57,12 +59,13 @@ const SignUp = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={submitHandler}>
-        <h2>Sign Up</h2>
-        <div>
-          <label>User Name</label>
+    <div className={styles.container}>
+      <form onSubmit={submitHandler} className={styles.formContainer}>
+        <h2 className={styles.header}>Sign Up</h2>
+        <div className={styles.formField}>
+          <label className={styles.labelForm}>User Name</label>
           <input
+            className={styles.formInput}
             type="text"
             name="name"
             onChange={changeHandler}
@@ -70,9 +73,10 @@ const SignUp = () => {
           />
           {error.name && touch.name && <span> {error.name} </span>}
         </div>
-        <div>
-          <label>Email</label>
+        <div className={styles.formField}>
+          <label className={styles.labelForm}>Email</label>
           <input
+            className={styles.formInput}
             type="text"
             name="email"
             onChange={changeHandler}
@@ -80,9 +84,10 @@ const SignUp = () => {
           />
           {error.email && touch.email && <span> {error.email} </span>}
         </div>
-        <div>
-          <label>Password</label>
+        <div className={styles.formField}>
+          <label className={styles.labelForm}>Password</label>
           <input
+            className={styles.formInput}
             type="password"
             name="password"
             onChange={changeHandler}
@@ -90,9 +95,10 @@ const SignUp = () => {
           />
           {error.password && touch.password && <span> {error.password} </span>}
         </div>
-        <div>
-          <label>Confirm Password</label>
+        <div className={styles.formField}>
+          <label className={styles.labelForm}>Confirm Password</label>
           <input
+            className={styles.formInput}
             type="password"
             name="confirmPassword"
             onChange={changeHandler}
