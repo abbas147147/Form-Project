@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 //validation
 import { validation } from "../validation/validation";
+//React toastify
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignUp = () => {
   const [data, setData] = useState({
@@ -12,6 +15,14 @@ const SignUp = () => {
   });
   const [error, setError] = useState({});
   const [touch, setTouched] = useState({});
+
+  const notify = (type, text) => {
+    if (type === "success") {
+      toast.success(text);
+    } else {
+      toast.error(text);
+    }
+  };
 
   useEffect(() => {
     setError(validation(data));
@@ -31,7 +42,9 @@ const SignUp = () => {
     event.preventDefault();
 
     if (!Object.keys(error).length) {
+      notify("success", "Welldone! SignUp Successfully");
     } else {
+      notify("error", "wrong data!");
       setTouched({
         ...touch,
         name: true,
@@ -104,6 +117,7 @@ const SignUp = () => {
         <a href="#">Login</a>
         <button type="submit">Sign Up</button>
       </form>
+      <ToastContainer />
     </div>
   );
 };
