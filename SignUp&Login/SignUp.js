@@ -65,7 +65,9 @@ const SignUp = () => {
         <div className={styles.formField}>
           <label className={styles.labelForm}>User Name</label>
           <input
-            className={styles.formInput}
+            className={
+              error.name && touch.name ? styles.uncompleted : styles.formInput
+            }
             type="text"
             name="name"
             onChange={changeHandler}
@@ -76,7 +78,9 @@ const SignUp = () => {
         <div className={styles.formField}>
           <label className={styles.labelForm}>Email</label>
           <input
-            className={styles.formInput}
+            className={
+              error.email && touch.email ? styles.uncompleted : styles.formInput
+            }
             type="text"
             name="email"
             onChange={changeHandler}
@@ -87,7 +91,11 @@ const SignUp = () => {
         <div className={styles.formField}>
           <label className={styles.labelForm}>Password</label>
           <input
-            className={styles.formInput}
+            className={
+              error.password && touch.password
+                ? styles.uncompleted
+                : styles.formInput
+            }
             type="password"
             name="password"
             onChange={changeHandler}
@@ -98,7 +106,11 @@ const SignUp = () => {
         <div className={styles.formField}>
           <label className={styles.labelForm}>Confirm Password</label>
           <input
-            className={styles.formInput}
+            className={
+              error.confirmPassword && touch.confirmPassword
+                ? styles.uncompleted
+                : styles.formInput
+            }
             type="password"
             name="confirmPassword"
             onChange={changeHandler}
@@ -108,20 +120,25 @@ const SignUp = () => {
             <span> {error.confirmPassword} </span>
           )}
         </div>
-        <div>
-          <label>I Accepting the regulations and Policy</label>
-          <input
-            type="checkbox"
-            name="isAccepted"
-            onChange={changeHandler}
-            onFocus={focusHandler}
-          />
+        <div className={styles.formField}>
+          <div className={styles.checkbox}>
+            <label>I Accepting the regulations and Policy</label>
+            <input
+              type="checkbox"
+              name="isAccepted"
+              onChange={changeHandler}
+              onFocus={focusHandler}
+            />
+          </div>
+
           {error.isAccepted && touch.isAccepted && (
             <span> {error.isAccepted} </span>
           )}
         </div>
-        <a href="#">Login</a>
-        <button type="submit">Sign Up</button>
+        <div className={styles.formButtons}>
+          <a href="#">Login</a>
+          <button type="submit">Sign Up</button>
+        </div>
       </form>
       <ToastContainer />
     </div>
